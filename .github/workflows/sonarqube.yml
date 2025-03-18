@@ -1,0 +1,27 @@
+name: SonarQube Scan
+on:
+  push:
+    branches:
+      - main  # Run the scan when code is pushed to 'main' branch
+
+jobs:
+  sonar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: SonarQube Scan
+        env:
+          SONAR_HOST_URL: "https://7cd8-2405-201-c039-802a-5044-f101-71e3-97ee.ngrok-free.app"  # Use ngrok public URL
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # Use GitHub Secret
+        run: |
+          mvn sonar:sonar \
+            -Dsonar.host.url=$SONAR_HOST_URL \
+            -Dsonar.login=$SONAR_TOKEN
