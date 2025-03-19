@@ -22,16 +22,6 @@ function Weather() {
             }
         }
     };
-
-    let arr = [2, 3, 4, 4, 5, 5];
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr.length; j++) {
-            if (arr[i] === arr[j] && i !== j) {
-                console.log("Duplicate found");
-            }
-        }
-    }
-
     async function fetchWeather(e) {
         if (e.code === "Enter") {
             e.preventDefault();  // Prevents the form from submitting the default way and refreshing the page
