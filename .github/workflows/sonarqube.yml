@@ -21,11 +21,11 @@ jobs:
 
       - name: SonarQube Scan
         env:
-          SONAR_HOST_URL: "https://7cd8-2405-201-c039-802a-5044-f101-71e3-97ee.ngrok-free.app"  # Change if using a remote SonarQube server
+          SONAR_HOST_URL: "https://4846-2a01-b740-6012-109-ed68-a98-41a7-5bef.ngrok-free.app"  # Change if using a remote SonarQube server
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           sonar-scanner \
             -Dsonar.projectKey=WeatherApp \
             -Dsonar.sources=src \
             -Dsonar.host.url=$SONAR_HOST_URL \
-            -Dsonar.login=$SONAR_TOKEN
+            -Dsonar.token=$SONAR_TOKEN
